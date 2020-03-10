@@ -4,14 +4,14 @@ const Home = () => (
   <div className="container">
     <Head>
       <title>Create Next App</title>
-      <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"></link>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
+    <nav>
+      
+    </nav>
+
     <main>
-      <div class="container-fluid">
-        ...
-      </div>
     </main>
 
     <footer>
