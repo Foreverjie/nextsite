@@ -1,22 +1,33 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from "next/head"
+import Link from "next/link"
 
 const Home = () => (
   <div className="container">
     <Head>
       <title>Create Next App</title>
       <link rel="icon" href="/favicon.ico" />
+      <script type="text/javascript" src="/style.js"></script>
     </Head>
 
-    <nav>
-      <div className="logo"><Link href='/'><a>JIE</a></Link></div>
+    <nav id="nav" className="fix-top">
+      <div className="logo">
+        <Link href="/">
+          <a>JIE</a>
+        </Link>
+      </div>
       <div className="nav-bar">
         <ul className="nav-list">
-            <li><a href="#">Software</a></li>
-            <li><a href="#">Gear</a></li>
+          <li>
+            <a href="#">Software</a>
+          </li>
+          <li>
+            <a href="#">Gear</a>
+          </li>
         </ul>
         <ul className="nav-list">
-          <li><a href="#">Contact</a></li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
         </ul>
       </div>
       <div className="burger">
@@ -26,14 +37,12 @@ const Home = () => (
       </div>
     </nav>
 
-    <main>
-    </main>
+    <main>asd</main>
 
     <footer>
       <a
         href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         target="_blank"
-        rel="noopener noreferrer"
       >
         Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
       </a>
