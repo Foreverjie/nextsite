@@ -30,7 +30,7 @@ const Home = () => (
           </li>
         </ul>
       </div>
-      <div className="burger">
+      <div id="burger">
         <div className="inline1"></div>
         <div className="inline2"></div>
         <div className="inline3"></div>
