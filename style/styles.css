@@ -12,17 +12,11 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-
-
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-image: url("/background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   display: flex;
 }
 
@@ -33,7 +27,12 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 15%;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  padding: 0 0;
 }
 
 h1 {
@@ -41,6 +40,10 @@ h1 {
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
+}
+
+.index-desc {
+  padding: 0 15%;
 }
 
 nav {
@@ -172,6 +175,19 @@ nav {
 .social {
   position: absolute;
   left: 0;
+}
+
+.article {
+  width: 100%;
+  padding: 5% 10% 5%;
+  background-color: #191919;
+  color: #FFF;
+}
+
+.article-title {
+  letter-spacing: 10px;
+  font-size: 2em;
+  padding-bottom: 5%;
 }
 
 footer {

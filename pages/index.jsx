@@ -39,7 +39,7 @@ const Home = () => (
 
     <main>
       <h1>JIE</h1>
-      <h3>
+      <h3 className="index-desc">
         Self-learning software and electrical engineering through research &
         development.
       </h3>
@@ -49,6 +49,18 @@ const Home = () => (
         </a>
       </div>
     </main>
+
+    <div className="article">
+      <div className="article-title">Article Title</div>
+      <div className="article-desc">
+        I was never the best at school or academics, I’m just a super curious
+        guy. My channel exists to share these ideas and theories that interest
+        me. I spend a lot of time building software and electronics, but there’s
+        also a lot more to it. I’ve been working on a video format to document
+        the logic, reasoning, and problems encountered during the process of
+        learning engineering. A combination of innovation and storytelling.
+      </div>
+    </div>
 
     <footer>
       <a
