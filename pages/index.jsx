@@ -4,7 +4,7 @@ import Link from "next/link"
 const Home = () => (
   <div className="container">
     <Head>
-      <title>Create Next App</title>
+      <title>JIE</title>
       <link rel="icon" href="/favicon.ico" />
       <script type="text/javascript" src="/style.js"></script>
     </Head>
@@ -37,7 +37,18 @@ const Home = () => (
       </div>
     </nav>
 
-    <main>asd</main>
+    <main>
+      <h1>JIE</h1>
+      <h3>
+        Self-learning software and electrical engineering through research &
+        development.
+      </h3>
+      <div className="social">
+        <a href="https://github.com/Foreverjie" target="_blank">
+          <img src="/github.svg"></img>
+        </a>
+      </div>
+    </main>
 
     <footer>
       <a

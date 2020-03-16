@@ -12,6 +12,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -31,6 +33,14 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 15%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
 }
 
 nav {
@@ -111,12 +121,15 @@ nav {
 .toggle .inline1 {
   transform: rotate(-45deg) translate(-5px, 3.5px);
 }
+
 .toggle .inline2 {
   opacity: 0;
 }
+
 .toggle .inline3 {
   transform: rotate(45deg) translate(-5px, -3.5px);
 }
+
 /* PC 样式 */
 @media (min-width: 576px) {
   .nav-bar {
@@ -154,6 +167,11 @@ nav {
   #burger {
     display: none;
   }
+}
+
+.social {
+  position: absolute;
+  left: 0;
 }
 
 footer {
