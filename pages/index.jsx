@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react"
-import IndexHeader from "../components/index_Header"
-import IndexNav from "../components/index_Nav"
+import IndexHeader from "../components/index_header"
+import IndexNav from "../components/index_nav"
 import IndexMain from "../components/index_main"
 import Article from "../components/article"
 import Footer from "../components/footer"
 import axios from "axios"
 
-const Home = ({ stars }) => {
+const Home = () => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
     async function fetchArticles() {
-      const articles = await axios.get("http://localhost:4000/articles")
+      const articles = await axios.get("https://www.jie1203.com/api/articles")
       setArticles(articles.data)
     }
     fetchArticles()

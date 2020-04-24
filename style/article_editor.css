@@ -1,0 +1,40 @@
+.main-article-editor {
+    display: flex;
+    flex-direction: row;
+    height: 92vh;
+    padding-top: 8vh;
+}
+
+.editor {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    padding: 2vw;
+}
+
+textarea, input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    margin-bottom: 2vh;
+}
+
+.display {
+    display: block;
+    width: 40vw;
+    padding: 2vw;
+    height: 100%;
+}
+
+.display-title {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1vh;
+}
+
+code {
+    background-color: black;
+    padding: .5rem;
+    width: 100%;
+}
