@@ -5,7 +5,7 @@ import Article from "../components/article"
 import Footer from "../components/footer"
 import axios from "axios"
 
-import Nav2 from '../components/nav'
+import Nav2 from "../components/nav"
 
 const Home = () => {
   const [articles, setArticles] = useState([])
@@ -23,13 +23,17 @@ const Home = () => {
       <IndexHeader />
       <Nav2 />
 
-      <div className="container-fluid">
+      <div className="container-fluid index">
         {/* <IndexNav /> */}
         <IndexMain />
+      </div>
+      <div
+        className="container-fluid mr-auto"
+        style={{ backgroundColor: "black", paddingTop: "5vh" }}
+      >
         <Article articles={articles} />
         <Footer />
       </div>
-
     </Fragment>
   )
 }

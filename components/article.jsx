@@ -1,12 +1,16 @@
+import { Card, Button } from "react-bootstrap"
+
 const Article = (props) => {
   return props.articles.map((article, i) => {
     return (
-      <React.Fragment key={i}>
-        <div className="article">
-          <div className="article-title">{article.title}</div>
-          <div className="article-desc">{article.desc}</div>
-        </div>
-      </React.Fragment>
+      <Card key={i} bg="dark" text="light">
+        <Card.Header as="h5">Featured</Card.Header>
+        <Card.Body>
+          <Card.Title>{article.title}</Card.Title>
+          <Card.Text>{article.desc}</Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
     )
   })
 }
