@@ -1,15 +1,13 @@
+import SocialGroup from './social_group'
+
 const IndexMain = () => (
-  <main>
+  <main className="d-flex justify-content-center align-items-center flex-column">
     <h1>JIE</h1>
-    <h3 className="index-desc">
+    <h3 style={{ width: '50%' }}>
       Self-learning software and electrical engineering through research &
       development.
     </h3>
-    <div className="social">
-      <a href="https://github.com/Foreverjie" target="_blank">
-        <img src="/github.svg"></img>
-      </a>
-    </div>
+    <SocialGroup />
   </main>
 )
 

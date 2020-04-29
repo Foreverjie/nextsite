@@ -1,0 +1,17 @@
+.container-fluid {
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+main {
+  height: 100vh;
+  color: white;
+}
+
+.social {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}

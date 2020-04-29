@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Fragment } from "react"
 import IndexHeader from "../components/index_header"
-import IndexNav from "../components/index_nav"
 import IndexMain from "../components/index_main"
 import Article from "../components/article"
 import Footer from "../components/footer"
 import axios from "axios"
+
+import Nav2 from '../components/nav'
 
 const Home = () => {
   const [articles, setArticles] = useState([])
@@ -18,15 +19,18 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="container">
+    <Fragment>
       <IndexHeader />
-      <IndexNav />
-      <IndexMain />
+      <Nav2 />
 
-      <Article articles={articles} />
+      <div className="container-fluid">
+        {/* <IndexNav /> */}
+        <IndexMain />
+        <Article articles={articles} />
+        <Footer />
+      </div>
 
-      <Footer />
-    </div>
+    </Fragment>
   )
 }
 
