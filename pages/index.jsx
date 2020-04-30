@@ -29,7 +29,7 @@ const Home = () => {
       </div>
       <div
         className="container-fluid mr-auto"
-        style={{ backgroundColor: "black", paddingTop: "5vh" }}
+        style={{ backgroundColor: "black", paddingTop: "5vh"}}
       >
         <Article articles={articles} />
         <Footer />
