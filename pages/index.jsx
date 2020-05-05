@@ -12,7 +12,8 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchArticles() {
-      const articles = await axios.get("https://www.jie1203.com/api/articles")
+      // const articles = await axios.get("https://www.jie1203.com/api/articles")
+      const articles = await axios.get("http://localhost:4000/articles")
       setArticles(articles.data)
     }
     fetchArticles()
@@ -29,7 +30,7 @@ const Home = () => {
       </div>
       <div
         className="container-fluid mr-auto"
-        style={{ backgroundColor: "black", paddingTop: "5vh"}}
+        style={{ backgroundColor: "black", paddingTop: "5vh" }}
       >
         <Article articles={articles} />
         <Footer />
