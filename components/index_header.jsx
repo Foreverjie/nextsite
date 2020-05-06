@@ -1,10 +1,9 @@
 import Head from "next/head"
 
-const IndexHeader = () => (
+const IndexHeader = (props) => (
   <Head>
-    <title>JIE</title>
+    <title>{props.title}</title>
     <link rel="icon" href="/favicon.ico" />
-    {/* <script type="text/javascript" src="/style.js"></script> */}
   </Head>
 )
 

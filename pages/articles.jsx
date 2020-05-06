@@ -21,16 +21,12 @@ const Home = () => {
 
   return (
     <Fragment>
-      <IndexHeader title={'JIE'}/>
+      <IndexHeader title={'Articles'}/>
       <Nav2 />
 
-      <div className="container-fluid index">
-        {/* <IndexNav /> */}
-        <IndexMain />
-      </div>
       <div
         className="container-fluid mr-auto"
-        style={{ backgroundColor: "black", paddingTop: "5vh" }}
+        style={{ backgroundColor: "black", paddingTop: "15vh" }}
       >
         <Article articles={articles} />
         <Footer />

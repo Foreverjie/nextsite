@@ -1,49 +1,76 @@
-import { useState } from 'react'
-import IndexNav from "../components/index_nav"
+import { useState, Fragment, useEffect } from 'react'
+import Nav2 from "../components/nav"
 import Footer from "../components/footer"
+import { Form, Button } from 'react-bootstrap'
 import { log } from 'util'
+import IndexHeader from '../components/index_header'
+import axios from "axios"
 
 const ReactMarkdown = require('react-markdown')
 
 const ArticleEditor = () => {
   
-  const [title, setTitle] = useState('title')
   const [content, setContent] = useState(`
+  # test
+  ## test
   \`\`\`
   console.log(asd)
   \`\`\`
   `)
-
-  function changeTitle(event) {
-    setTitle(event.target.value)
-  }
+  const [topics, setTopics] = useState([])
+  useEffect(() => {
+    async function fetchTopics() {
+      // const topics = await axios.get("https://www.jie1203.com/api/topics")
+      const topics = await axios.get("http://localhost:4000/topics")
+      log(topics)
+      setTopics(topics.data)
+    }
+    fetchTopics()
+    log(topics)
+  }, [])
 
   function changeContent(event) {
     setContent(event.target.value)
   }
 
-  const input = '# This is a header\n\nAnd this is a paragraph'
-
   return (
-  <div className="container">
-    <IndexNav />
+  <Fragment>
+    <IndexHeader title={'Editor'} />
+    <Nav2 />
 
-    <main>
-      <div className="main-article-editor">
-        <div className="editor">
-          <input placeholder="title" onChange={changeTitle}/>
-          <textarea placeholder="content" rows="10" onChange={changeContent}/>
-        </div>
-        <div className="display">
-          <h1 className="display-title">{title}</h1>
-          <ReactMarkdown source={content} />
-        </div>
+    <div className="d-flex" style={{marginTop: '15vh'}}>
+      <Form style={{padding:'0 2rem', width: '50vw'}}>
+        <Form.Group>
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="email" placeholder="Here goes your article title" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Topics</Form.Label>
+          <Form.Control as="select" multiple>
+            {topics.map((topic, i) => {
+              return (
+                <option key={i}>{topic.name}</option>
+              )}
+            )}
+          </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Content</Form.Label>
+          <Form.Control as="textarea" rows="8" onChange={changeContent} />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Publish
+        </Button>
+      </Form>
+
+      <div style={{padding: '0 2rem'}}>
+        <h1 className="badge badge-secondary">Content Preview</h1>
+        <ReactMarkdown source={content} />
       </div>
+    </div>
 
-    </main>
-
-    <Footer />
-  </div>
+    <Footer color={'black'}/>
+  </Fragment>
 )}
 
 export default ArticleEditor
