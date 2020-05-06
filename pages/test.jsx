@@ -1,11 +1,11 @@
-import { Badge } from "react-bootstrap"
+import privateRoute from "../components/private_route"
 
-const Test = () => {
-  return (
-    <Badge pill variant="primary">
-      test
-    </Badge>
-  )
+const Test = ({ auth }) => {
+  return <div>test</div>
 }
 
-export default Test
+Test.getInitialProps = () => {
+  console.log("test initial")
+}
+
+export default privateRoute(Test)
