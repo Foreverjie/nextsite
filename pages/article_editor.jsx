@@ -70,16 +70,11 @@ const ArticleEditor = () => {
           </Form.Group>
           <Form.Group>
             <Form.Label>Topics</Form.Label>
-            <Form.Control as="select" multiple required>
+            <Form.Control as="select" multiple>
               {topics.map((topic, i) => {
                 return <option key={i}>{topic.name}</option>
               })}
             </Form.Control>
-            {/* <select className="selectpicker form-control" multiple required>
-              <option>Mustard</option>
-              <option>Ketchup</option>
-              <option>Barbecue</option>
-            </select> */}
           </Form.Group>
           <Form.Group>
             <Form.Label>Content</Form.Label>
