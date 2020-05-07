@@ -1,11 +1,14 @@
-import privateRoute from "../components/private_route"
+import withAuth from "../components/auth_route"
 
-const Test = ({ auth }) => {
-  return <div>test</div>
+const Test = (props) => {
+
+  return (
+    <div>
+      <h1>test</h1>
+      <h2><strong>Name: </strong>{props.auth.decodedToken.name}</h2>
+      <h2><strong>Expired At: </strong>{props.auth.expiresAt}</h2>
+    </div>
+  )
 }
 
-Test.getInitialProps = () => {
-  console.log("test initial")
-}
-
-export default privateRoute(Test)
+export default withAuth(Test)

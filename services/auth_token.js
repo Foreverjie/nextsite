@@ -2,10 +2,11 @@ import jwtDecode from "jwt-decode"
 import Cookie from "js-cookie"
 import Router from "next/router"
 
-const TOKEN_STORAGE_KEY = "nextSite.authToken"
+export const TOKEN_STORAGE_KEY = "nextSite.authToken"
 
 export class AuthToken {
   constructor(token) {
+    this.token = token
     this.decodedToken = {
       name: "",
       exp: 0,
@@ -17,19 +18,19 @@ export class AuthToken {
     } catch (e) {}
   }
 
-  get authorizationString() {
+  authorizationString() {
     return `Bearer ${this.token}`
   }
 
-  get expiresAt() {
+  expiresAt() {
     return new Date(this.decodedToken.exp * 1000)
   }
 
-  get isExpired() {
+  isExpired() {
     return new Date() > this.expiresAt
   }
 
-  get isValid() {
+  isValid() {
     return !this.isExpired
   }
 
