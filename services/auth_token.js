@@ -27,7 +27,7 @@ export class AuthToken {
   }
 
   isExpired() {
-    return new Date() > this.expiresAt
+    return new Date() > this.expiresAt()
   }
 
   isValid() {
