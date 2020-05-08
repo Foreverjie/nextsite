@@ -24,7 +24,10 @@ const Home = () => {
       <IndexHeader title={'JIE'}/>
       <Nav2 />
 
-      <div className="container-fluid index">
+      <div className="container-fluid" style={{  backgroundImage: 'url("/background.jpg")',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',}}>
         {/* <IndexNav /> */}
         <IndexMain />
       </div>

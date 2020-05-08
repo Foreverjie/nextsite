@@ -7,6 +7,9 @@ import IndexHeader from "../components/index_header"
 import axios from "axios"
 import withAuth from "../components/auth_route"
 import ReactMarkdown from "react-markdown"
+import { Select } from "antd"
+
+const { Option } = Select
 
 const ArticleEditor = () => {
   const [content, setContent] = useState(`
@@ -44,7 +47,13 @@ const ArticleEditor = () => {
     if (validated) {
       e.preventDefault()
       console.log(e.target[0].value)
+      console.log(e.target[1].value)
+      console.log(e.target[2].value)
     }
+  }
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
   }
 
   return (
@@ -52,7 +61,7 @@ const ArticleEditor = () => {
       <IndexHeader title={"Editor"} />
       <Nav2 />
 
-      <div className="d-flex" style={{ marginTop: "15vh", height: "85vh" }}>
+      <div className="d-flex" style={{ marginTop: "15vh", height: "fit-conotent" }}>
         <Form
           validated={validated}
           style={{ padding: "0 2rem", width: "50vw" }}
@@ -70,11 +79,16 @@ const ArticleEditor = () => {
           </Form.Group>
           <Form.Group>
             <Form.Label>Topics</Form.Label>
-            <Form.Control as="select" multiple>
+            <Select
+              mode="multiple"
+              style={{ width: '100%' }}
+              placeholder="Please select"
+              onChange={handleChange}
+            >
               {topics.map((topic, i) => {
-                return <option key={i}>{topic.name}</option>
+                return <Option key={topic.name}>{topic.name}</Option>
               })}
-            </Form.Control>
+            </Select>
           </Form.Group>
           <Form.Group>
             <Form.Label>Content</Form.Label>
