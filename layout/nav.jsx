@@ -1,6 +1,6 @@
 import {
     Navbar,
-    Nav,
+    Nav as Nav2,
   } from "react-bootstrap"
   import Link from "next/link"
   
@@ -13,7 +13,7 @@ import {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav2 className="mr-auto">
           <Link href="/articles">
             <a className="nav-link">Articles</a>
           </Link>
@@ -23,10 +23,10 @@ import {
           <Link href="/test">
             <a className="nav-link">Test</a>
           </Link>
-        </Nav>
-        <Nav className="mr-0">
-          <Nav>Contact</Nav>
-        </Nav>
+        </Nav2>
+        <Nav2 className="mr-0">
+          Contact
+        </Nav2>
       </Navbar.Collapse>
     </Navbar>
   )

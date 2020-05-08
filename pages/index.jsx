@@ -4,8 +4,7 @@ import IndexMain from "../components/index_main"
 import Article from "../components/article"
 import Footer from "../components/footer"
 import axios from "axios"
-
-import Nav2 from "../components/nav"
+import Nav from "../layout/nav"
 
 const Home = () => {
   const [articles, setArticles] = useState([])
@@ -22,7 +21,7 @@ const Home = () => {
   return (
     <Fragment>
       <IndexHeader title={'JIE'}/>
-      <Nav2 />
+      <Nav />
 
       <div className="container-fluid" style={{  backgroundImage: 'url("/background.jpg")',
         backgroundRepeat: 'no-repeat',

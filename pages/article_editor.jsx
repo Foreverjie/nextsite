@@ -1,5 +1,5 @@
 import { useState, Fragment, useEffect } from "react"
-import Nav2 from "../components/nav"
+import Nav from "../layout/nav"
 import Footer from "../components/footer"
 import { Form, Button } from "react-bootstrap"
 import { log } from "util"
@@ -59,7 +59,7 @@ const ArticleEditor = () => {
   return (
     <Fragment>
       <IndexHeader title={"Editor"} />
-      <Nav2 />
+      <Nav />
 
       <div className="d-flex" style={{ marginTop: "15vh", height: "fit-conotent" }}>
         <Form
