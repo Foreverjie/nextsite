@@ -39,3 +39,18 @@ export class AuthToken {
     await Router.push("/")
   }
 }
+
+export const tokenConfig = (token) => {
+  const config = {
+    headers: {
+      'Content-type': 'application/json'
+    }
+  }
+
+  // If token, add to headers config
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`
+  }
+
+  return config
+}

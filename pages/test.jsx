@@ -1,13 +1,26 @@
 import withAuth from "../components/auth_route"
-import { Button } from "antd"
-import { Select } from 'antd'
+import { Button, Form, Input, InputNumber, Select } from "antd"
 
 const { Option } = Select
 
-const Test = (props) => {
+const validateMessages = {
+  required: "${label} is required!",
+  types: {
+    email: "${label} is not validate email!",
+    number: "${label} is not a validate number!",
+  },
+  number: {
+    range: "${label} must be between ${min} and ${max}",
+  },
+}
 
-  function handleChange(value) {
-    console.log(`selected ${value}`);
+const Test = (props) => {
+  const onFinish = (values) => {
+    console.log("finish", values)
+  }
+
+  function topicsChange(value) {
+    console.log(`selected ${value}`)
   }
 
   return (
@@ -21,17 +34,70 @@ const Test = (props) => {
         <strong>Expired At: </strong>
         {props.auth.expiresTime}
       </h2>
-      <Button type="primary">Button</Button>
-      <Select
-        mode="multiple"
-        style={{ width: '100%' }}
-        placeholder="Please select"
-        onChange={handleChange}
+      <Form
+        layout={"vertical"}
+        name="nest-messages"
+        onFinish={onFinish}
+        validateMessages={validateMessages}
       >
-        <Option key={1}>1</Option>
-        <Option key={2}>2</Option>
-        <Option key={3}>3</Option>
-      </Select>
+        <Form.Item
+          name={["user", "name"]}
+          label="Name"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name={["user", "email"]}
+          label="Email"
+          rules={[
+            {
+              type: "email",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name={["user", "age"]}
+          label="Age"
+          rules={[
+            {
+              type: "number",
+              min: 0,
+              max: 99,
+            },
+          ]}
+        >
+          <InputNumber />
+        </Form.Item>
+        <Form.Item name={["user", "website"]} label="Website">
+          <Input />
+        </Form.Item>
+        <Form.Item name={["user", "introduction"]} label="Introduction">
+          <Input.TextArea />
+        </Form.Item>
+        <Form.Item name={["user", "topics"]} label="Topics">
+          <Select
+            mode="multiple"
+            style={{ width: "100%" }}
+            placeholder="Please select"
+            onChange={topicsChange}
+          >
+            <Option key={1}>1</Option>
+            <Option key={2}>2</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   )
 }

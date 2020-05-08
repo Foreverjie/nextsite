@@ -1,6 +1,3 @@
-import {
-  ServerResponse
-} from "http"
 import Router from "next/router"
 
 export const redirectToLogin = (server) => {
@@ -12,5 +9,17 @@ export const redirectToLogin = (server) => {
     server.end()
   } else {
     Router.push(login)
+  }
+}
+
+export const redirectToIndex = (server) => {
+  const path = "/"
+  if (server) {
+    server.writeHead(302, {
+      Location: path,
+    })
+    server.end()
+  } else {
+    Router.push(path)
   }
 }
