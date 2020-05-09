@@ -39,13 +39,7 @@ const ArticleEditor = (props) => {
   }, [])
 
   // 正文内容
-  const [content, setContent] = useState(`
-  # test
-  ## test
-  \`\`\`js
-  console.log(asd)
-  \`\`\`
-  `)
+  const [content, setContent] = useState('')
   function changeContent(event) {
     setContent(event.target.value)
   }
@@ -62,16 +56,14 @@ const ArticleEditor = (props) => {
     // console.log(res.data)
     if (res.status === 200) {
       articleNotification("success", res.statusText)
+      // 提交后重定向到主页
+      redirectToIndex()
     } else {
       articleNotification("error", res.statusText)
     }
-
-    // 提交后重定向到主页
-    redirectToIndex()
   }
 
   function topicsChange(value) {
-    console.log(`selected ${value}`)
   }
 
   return (
@@ -116,7 +108,7 @@ const ArticleEditor = (props) => {
               mode="multiple"
               style={{ width: "100%" }}
               placeholder="Please select"
-              onChange={topicsChange}
+              // onChange={topicsChange}
             >
               {topics.map((topic, i) => {
                 return <Option key={topic._id}>{topic.name}</Option>

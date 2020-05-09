@@ -11,8 +11,9 @@ const Home = () => {
   useEffect(() => {
     async function fetchArticles() {
       // const articles = await axios.get("https://www.jie1203.com/api/articles")
-      const articles = await axios.get("http://localhost:4000/articles")
-      setArticles(articles.data)
+      const res = await axios.get("http://localhost:4000/articles")
+      setArticles(res.data)
+      // console.log(res.data)
     }
     fetchArticles()
   }, [])

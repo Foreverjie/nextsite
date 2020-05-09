@@ -1,5 +1,6 @@
 import { Card, Button } from "react-bootstrap"
 import TopicLabel from "./topic_label"
+import Link from "next/link";
 
 const Article = (props) => {
   return props.articles.map((article, i) => {
@@ -11,7 +12,11 @@ const Article = (props) => {
         <Card.Body>
           <Card.Title>{article.title}</Card.Title>
           <Card.Text>{article.desc}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">
+            <Link href="/article/[id]" as={`article/${article._id}`}>
+              <a style={{color: 'white'}}>Article Detail</a>  
+            </Link>
+          </Button>
         </Card.Body>
       </Card>
     )
