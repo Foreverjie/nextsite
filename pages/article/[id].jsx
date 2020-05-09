@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { urlPrefix } from '../../config'
+
 
 const Article = (props) => {
   const router = useRouter()
@@ -16,7 +18,7 @@ const Article = (props) => {
 Article.getInitialProps = async (ctx) => {
   // console.log(ctx)
   const { id } = ctx.query
-  const res = await axios.get(`http://localhost:4000/articles/${id}`)
+  const res = await axios.get(`${urlPrefix}/articles/${id}`)
 
   const intialProps = {
     article: res.data

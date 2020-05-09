@@ -7,6 +7,8 @@ import { log } from "util"
 import IndexHeader from "../components/index_header"
 import axios from "axios"
 import { AuthToken } from "../services/auth_token"
+import { urlPrefix } from '../config'
+
 
 const Login = () => {
   // const [name, setName] = useState('')
@@ -19,7 +21,7 @@ const Login = () => {
       name: e.target[0].value,
       password: e.target[1].value,
     }
-    const res = await axios.post("http://localhost:4000/users/login", data)
+    const res = await axios.post(`${urlPrefix}/users/login`, data)
     log(res.data.token)
     await AuthToken.storeToken(res.data.token)
     // Router.push("/")

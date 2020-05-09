@@ -4,6 +4,8 @@ import Article from "../components/article"
 import Footer from "../components/footer"
 import axios from "axios"
 import Nav from "../layout/nav"
+import { urlPrefix } from '../config'
+
 
 const Home = () => {
   const [articles, setArticles] = useState([])
@@ -11,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchArticles() {
       // const articles = await axios.get("https://www.jie1203.com/api/articles")
-      const res = await axios.get("http://localhost:4000/articles")
+      const res = await axios.get(`${urlPrefix}/articles`)
       setArticles(res.data)
       // console.log(res.data)
     }

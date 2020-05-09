@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 import withAuth from "../components/auth_route"
 import { tokenConfig } from "../services/auth_token"
 import { redirectToIndex } from "../services/redirect"
-
+import { urlPrefix } from '../config'
 import { Form, Button, Input, Select, notification } from "antd"
 
 const { Option } = Select
@@ -31,7 +31,7 @@ const ArticleEditor = (props) => {
   useEffect(() => {
     async function fetchTopics() {
       // const topics = await axios.get("https://www.jie1203.com/api/topics")
-      const topics = await axios.get("http://localhost:4000/topics")
+      const topics = await axios.get(`${urlPrefix}/topics`)
       // console.log(topics)
       setTopics(topics.data)
     }
@@ -48,7 +48,7 @@ const ArticleEditor = (props) => {
     const config = tokenConfig(props.auth.token)
 
     const res = await axios.post(
-      "http://localhost:4000/articles",
+      `${urlPrefix}/articles`,
       values.article,
       config
     )
