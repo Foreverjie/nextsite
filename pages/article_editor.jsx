@@ -8,12 +8,21 @@ import withAuth from "../components/auth_route"
 import { tokenConfig } from "../services/auth_token"
 import { redirectToIndex } from "../services/redirect"
 
-import { Form, Button, Input, Select } from "antd"
+import { Form, Button, Input, Select, notification } from "antd"
 
 const { Option } = Select
 
 const validateMessages = {
   required: "${label} is required!",
+}
+
+const articleNotification = (type, msg) => {
+  notification[type]({
+    message: 'Add Article',
+    description:
+      msg,
+    placement: "bottomRight",
+  })
 }
 
 const ArticleEditor = (props) => {
@@ -49,8 +58,13 @@ const ArticleEditor = (props) => {
       values.article,
       config
     )
-
-    console.log(res.data)
+    // console.log(res)
+    // console.log(res.data)
+    if (res.status === 200) {
+      articleNotification("success", res.statusText)
+    } else {
+      articleNotification("error", res.statusText)
+    }
 
     // 提交后重定向到主页
     redirectToIndex()
