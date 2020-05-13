@@ -4,12 +4,17 @@ import { urlPrefix } from "../../config"
 import { Fragment } from "react"
 import IndexHeader from "../../components/index_header"
 import Nav from "../../layout/nav"
+import Footer from "../../components/footer"
 import ReactMarkdown from "react-markdown"
 import { Badge } from "antd"
 
 const Article = (props) => {
   const router = useRouter()
   const { id } = router.query
+
+  const updateAt = new Date(props.article.updatedAt).toLocaleString("chinese", {
+    hour12: false,
+  })
 
   return (
     <Fragment>
@@ -18,7 +23,7 @@ const Article = (props) => {
 
       <div
         className="d-flex flex-column align-items-center"
-        style={{ marginTop: "10vh", height: "90vh" }}
+        style={{ margin: "10vh 0 3vh" }}
       >
         <div
           style={{
@@ -32,11 +37,31 @@ const Article = (props) => {
         >
           {props.article.title}
         </div>
-        <h3 style={{ width: "fit-content", maxWidth: "60%" }}>
-          <Badge color={"blue"} text={props.article.author.name} />
-        </h3>
-        <ReactMarkdown source={props.article.content} />
+
+        <div
+          style={{ width: "fit-content", maxWidth: "60%", padding: "2rem 0" }}
+        >
+          <Badge
+            color={"blue"}
+            text={props.article.author.name + " - " + updateAt}
+          />
+        </div>
+
+        <div
+          style={{
+            width: "60%",
+            maxWidth: "60%",
+            fontSize: "21px",
+            lineHeight: "32px",
+            fontFamily:
+              'medium-content-title-font, Georgia, Cambria, "Times New Roman", Times, serif',
+          }}
+        >
+          <ReactMarkdown source={props.article.content} />
+        </div>
       </div>
+
+      <Footer color={"black"} />
     </Fragment>
   )
 }

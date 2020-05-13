@@ -15,3 +15,8 @@ main {
   top: 50%;
   left: 0;
 }
+
+/* article code */
+pre {
+  background-color: lightgray !important;
+}
