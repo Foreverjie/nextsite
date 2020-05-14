@@ -6,7 +6,8 @@ import IndexHeader from "../../components/index_header"
 import Nav from "../../layout/nav"
 import Footer from "../../components/footer"
 import ReactMarkdown from "react-markdown"
-import { Badge } from "antd"
+import { Badge, Tag, Affix, Button } from "antd"
+import { EditOutlined } from '@ant-design/icons'
 
 const Article = (props) => {
   const router = useRouter()
@@ -23,7 +24,7 @@ const Article = (props) => {
 
       <div
         className="d-flex flex-column align-items-center"
-        style={{ margin: "10vh 0 3vh" }}
+        style={{ margin: "10vh 0 3vh", minHeight: "80vh" }}
       >
         <div
           style={{
@@ -39,12 +40,18 @@ const Article = (props) => {
         </div>
 
         <div
+          className="d-flex flex-column align-items-center"
           style={{ width: "fit-content", maxWidth: "60%", padding: "2rem 0" }}
         >
           <Badge
             color={"blue"}
             text={props.article.author.name + " - " + updateAt}
           />
+          <div style={{paddingTop: '0.5rem'}}>
+            {props.article.topics.map((topic, i) => {
+              return <Tag color="blue" key={topic._id}>{topic.name}</Tag>
+            })}
+          </div>
         </div>
 
         <div
@@ -59,6 +66,9 @@ const Article = (props) => {
         >
           <ReactMarkdown source={props.article.content} />
         </div>
+        <Affix style={{ position: 'absolute', bottom: '2rem', right: '2rem' }}>
+          <Button type="primary" shape="circle" icon={<EditOutlined />} />
+        </Affix>
       </div>
 
       <Footer color={"black"} />
