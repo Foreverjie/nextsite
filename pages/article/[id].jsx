@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import axios from "axios"
 import { urlPrefix } from "../../config"
 import { Fragment } from "react"
@@ -7,15 +6,12 @@ import Nav from "../../layout/nav"
 import Footer from "../../components/footer"
 import ReactMarkdown from "react-markdown"
 import { Badge, Tag, Affix, Button } from "antd"
-import { EditOutlined } from '@ant-design/icons'
+import { EditOutlined } from "@ant-design/icons"
+import dateFormat from "dateformat"
 
 const Article = (props) => {
-  const router = useRouter()
-  const { id } = router.query
-
-  const updateAt = new Date(props.article.updatedAt).toLocaleString("chinese", {
-    hour12: false,
-  })
+  const updateAt = new Date(props.article.updatedAt)
+  const updateTime = dateFormat(updateAt, "yyyy-mm-dd HH:MM")
 
   return (
     <Fragment>
@@ -45,11 +41,15 @@ const Article = (props) => {
         >
           <Badge
             color={"blue"}
-            text={props.article.author.name + " - " + updateAt}
+            text={props.article.author.name + " - " + updateTime}
           />
-          <div style={{paddingTop: '0.5rem'}}>
+          <div style={{ paddingTop: "0.5rem" }}>
             {props.article.topics.map((topic, i) => {
-              return <Tag color="blue" key={topic._id}>{topic.name}</Tag>
+              return (
+                <Tag color="blue" key={topic._id}>
+                  {topic.name}
+                </Tag>
+              )
             })}
           </div>
         </div>
@@ -66,8 +66,15 @@ const Article = (props) => {
         >
           <ReactMarkdown source={props.article.content} />
         </div>
-        <Affix style={{ position: 'absolute', bottom: '2rem', right: '2rem' }}>
-          <Button type="primary" shape="circle" icon={<EditOutlined />} />
+        <Affix style={{ position: "fixed", bottom: "5rem", right: "5rem" }}>
+          <Button
+            type="primary"
+            className="d-flex justify-content-center"
+            shape="circle"
+            size="large"
+          >
+            <EditOutlined />
+          </Button>
         </Affix>
       </div>
 

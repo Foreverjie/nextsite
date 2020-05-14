@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-select": "^1.13.16",
+    "dateformat": "^3.0.3",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "next": "9.2.2",
