@@ -6,8 +6,9 @@ import Nav from "../../layout/nav"
 import Footer from "../../components/footer"
 import ReactMarkdown from "react-markdown"
 import { Badge, Tag, Affix, Button } from "antd"
-import { EditOutlined } from "@ant-design/icons"
+import { EditOutlined, LikeOutlined } from "@ant-design/icons"
 import dateFormat from "dateformat"
+import withAuth from "../../components/auth_route"
 
 const Article = (props) => {
   const updateAt = new Date(props.article.updatedAt)
@@ -67,14 +68,21 @@ const Article = (props) => {
           <ReactMarkdown source={props.article.content} />
         </div>
         <Affix style={{ position: "fixed", bottom: "5rem", right: "5rem" }}>
-          <Button
+          {props.article.author._id == props.auth.decodedToken._id ? <Button
             type="primary"
             className="d-flex justify-content-center"
             shape="circle"
             size="large"
           >
             <EditOutlined />
-          </Button>
+          </Button> : <Button
+            type="default"
+            className="d-flex justify-content-center"
+            shape="circle"
+            size="large"
+          >
+            <LikeOutlined />
+          </Button>}
         </Affix>
       </div>
 
@@ -84,7 +92,6 @@ const Article = (props) => {
 }
 
 Article.getInitialProps = async (ctx) => {
-  // console.log(ctx)
   const { id } = ctx.query
   const res = await axios.get(`${urlPrefix}/articles/${id}`)
 
@@ -94,4 +101,4 @@ Article.getInitialProps = async (ctx) => {
   return intialProps
 }
 
-export default Article
+export default withAuth(Article)

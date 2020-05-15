@@ -11,7 +11,7 @@ export default (AuthComponent) => {
     const token = ServerCookie(ctx)[TOKEN_STORAGE_KEY]
     const auth = new AuthToken(token)
     auth.expiresTime = auth.expiresAt().toLocaleString()
-    const initialProps = {
+    let initialProps = {
       auth,
     }
     if (auth.isExpired()) {
@@ -19,7 +19,8 @@ export default (AuthComponent) => {
       redirectToLogin(ctx.res)
     }
     if (AuthComponent.getInitialProps) {
-      return AuthComponent.getInitialProps(initialProps)
+      const authComponentProps = await AuthComponent.getInitialProps(ctx)
+      initialProps = { ...authComponentProps, ...initialProps }
     }
     return initialProps
   }

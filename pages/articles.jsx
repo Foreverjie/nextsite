@@ -7,7 +7,7 @@ import Nav from "../layout/nav"
 import { urlPrefix } from '../config'
 
 
-const Home = () => {
+const Articles = () => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Articles
