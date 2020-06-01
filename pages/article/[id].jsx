@@ -9,6 +9,7 @@ import { Badge, Tag, Affix, Button } from "antd"
 import { EditOutlined, LikeOutlined } from "@ant-design/icons"
 import dateFormat from "dateformat"
 import withAuth from "../../components/auth_route"
+import Link from "next/link"
 
 const Article = (props) => {
   const updateAt = new Date(props.article.updatedAt)
@@ -68,21 +69,33 @@ const Article = (props) => {
           <ReactMarkdown source={props.article.content} />
         </div>
         <Affix style={{ position: "fixed", bottom: "5rem", right: "5rem" }}>
-          {props.article.author._id == props.auth.decodedToken._id ? <Button
-            type="primary"
-            className="d-flex justify-content-center"
-            shape="circle"
-            size="large"
-          >
-            <EditOutlined />
-          </Button> : <Button
-            type="default"
-            className="d-flex justify-content-center"
-            shape="circle"
-            size="large"
-          >
-            <LikeOutlined />
-          </Button>}
+          {props.article.author._id == props.auth.decodedToken._id ? (
+            <Link
+              href="/article_editor/[id]"
+              as={`/article_editor/${props.article._id}`}
+              // prefetch={false}
+            >
+              <a>
+                <Button
+                  type="primary"
+                  className="d-flex justify-content-center align-items-center"
+                  shape="circle"
+                  size="large"
+                >
+                  <EditOutlined />
+                </Button>
+              </a>
+            </Link>
+          ) : (
+            <Button
+              type="default"
+              className="d-flex justify-content-center align-items-center"
+              shape="circle"
+              size="large"
+            >
+              <LikeOutlined />
+            </Button>
+          )}
         </Affix>
       </div>
 

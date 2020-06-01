@@ -1,13 +1,13 @@
 import { useState, Fragment, useEffect } from "react"
-import IndexHeader from "../components/index_header"
-import Nav from "../layout/nav"
-import Footer from "../components/footer"
+import IndexHeader from "../../components/index_header"
+import Nav from "../../layout/nav"
+import Footer from "../../components/footer"
 import axios from "axios"
 import ReactMarkdown from "react-markdown"
-import withAuth from "../components/auth_route"
-import { tokenConfig } from "../services/auth_token"
-import { redirectToIndex } from "../services/redirect"
-import { urlPrefix } from '../config'
+import withAuth from "../../components/auth_route"
+import { tokenConfig } from "../../services/auth_token"
+import { redirectToIndex } from "../../services/redirect"
+import { urlPrefix } from "../../config"
 import { Form, Button, Input, Select, notification } from "antd"
 
 const { Option } = Select
@@ -18,9 +18,8 @@ const validateMessages = {
 
 const articleNotification = (type, msg) => {
   notification[type]({
-    message: 'Add Article',
-    description:
-      msg,
+    message: "Add Article",
+    description: msg,
     placement: "bottomRight",
   })
 }
@@ -30,7 +29,6 @@ const ArticleEditor = (props) => {
   const [topics, setTopics] = useState([])
   useEffect(() => {
     async function fetchTopics() {
-      // const topics = await axios.get("https://www.jie1203.com/api/topics")
       const topics = await axios.get(`${urlPrefix}/topics`)
       // console.log(topics)
       setTopics(topics.data)
@@ -39,7 +37,7 @@ const ArticleEditor = (props) => {
   }, [])
 
   // 正文内容
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(props.article.content)
   function changeContent(event) {
     setContent(event.target.value)
   }
@@ -63,8 +61,7 @@ const ArticleEditor = (props) => {
     }
   }
 
-  function topicsChange(value) {
-  }
+  function topicsChange(value) {}
 
   return (
     <Fragment>
@@ -142,6 +139,16 @@ const ArticleEditor = (props) => {
       <Footer color={"black"} />
     </Fragment>
   )
+}
+
+ArticleEditor.getInitialProps = async (ctx) => {
+  const { id } = ctx.query
+  const res = await axios.get(`${urlPrefix}/articles/${id}`)
+
+  const intialProps = {
+    article: res.data,
+  }
+  return intialProps
 }
 
 export default withAuth(ArticleEditor)
