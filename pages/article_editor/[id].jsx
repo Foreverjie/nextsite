@@ -18,7 +18,7 @@ const validateMessages = {
 
 const articleNotification = (type, msg) => {
   notification[type]({
-    message: "Add Article",
+    message: "Update Article",
     description: msg,
     placement: "bottomRight",
   })
@@ -46,7 +46,7 @@ const ArticleEditor = (props) => {
     const config = tokenConfig(props.auth.token)
 
     const res = await axios.post(
-      `${urlPrefix}/articles`,
+      `${urlPrefix}/articles/${props.article._id}`,
       values.article,
       config
     )
@@ -61,7 +61,6 @@ const ArticleEditor = (props) => {
     }
   }
 
-  function topicsChange(value) {}
 
   return (
     <Fragment>
@@ -77,6 +76,10 @@ const ArticleEditor = (props) => {
           style={{ padding: "0 2rem", width: "50vw" }}
           onFinish={onFinish}
           validateMessages={validateMessages}
+          initialValues={{
+            ["title"]: props.article.title,
+            ["desc"]: props.article.desc,
+          }}
         >
           <Form.Item
             name={["article", "title"]}
@@ -105,7 +108,6 @@ const ArticleEditor = (props) => {
               mode="multiple"
               style={{ width: "100%" }}
               placeholder="Please select"
-              // onChange={topicsChange}
             >
               {topics.map((topic, i) => {
                 return <Option key={topic._id}>{topic.name}</Option>
@@ -121,7 +123,7 @@ const ArticleEditor = (props) => {
               },
             ]}
           >
-            <Input.TextArea rows={20} onChange={changeContent} />
+            <Input.TextArea rows={20} onChange={changeContent} value={props.article.content}/>
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
