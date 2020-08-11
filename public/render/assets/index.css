@@ -105,7 +105,14 @@ input[type='range']::-webkit-slider-thumb {
     justify-content: space-between;
 }
 
-.config div {
+.config div{
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.config div div {
     width: 28%;
     display: flex;
     flex-direction: column;

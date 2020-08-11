@@ -20,6 +20,9 @@ const Nav2 = () => (
         <Link href="/article_editor">
           <a className="nav-link">Editor</a>
         </Link>
+        <Link href="/axe_render">
+          <a className="nav-link">Render</a>
+        </Link>
         <Link href="/test">
           <a className="nav-link">Test</a>
         </Link>

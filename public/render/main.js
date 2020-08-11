@@ -17,7 +17,7 @@ const test_mesh = function (canvas, mesh) {
 // 函数名应该用 const 修饰, 这样不会被意外修改
 const __main = function () {
   let canvas = GuaCanvas.new('#id-canvas')
-  initSliders()
+  // initSliders()
 
   // let cube = cube3d()
   // let mesh = AxeMesh.fromAxe3D(cube)

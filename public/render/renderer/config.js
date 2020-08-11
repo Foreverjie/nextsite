@@ -131,6 +131,7 @@ const config = {
 
 
 const initSliders = () => {
+    console.log('slider init')
     let width = _e('#id-canvas').clientWidth
     let el = _e('.config')
     el.style.width = width + 'px'
@@ -154,7 +155,9 @@ const initSliders = () => {
         `
         t += s
     }
+    console.log(el)
     el.innerHTML = t
+    console.log(el)
     let range = _es('.config-range')
     range.forEach(item => {
         item.addEventListener('input', e => {
