@@ -23,6 +23,9 @@ import {
           <Link href="/test">
             <a className="nav-link">Test</a>
           </Link>
+          <Link href="/axe_render">
+            <a className="nav-link">Render</a>
+          </Link>
         </Nav2>
         <Nav2 className="mr-0">
           Contact
