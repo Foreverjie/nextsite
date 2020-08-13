@@ -16,7 +16,7 @@
     "dateformat": "^3.0.3",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
-    "next": "9.2.2",
+    "next": "9.3.2",
     "next-cookies": "^2.0.3",
     "react": "16.13.0",
     "react-bootstrap": "^1.0.1",
