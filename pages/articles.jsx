@@ -1,11 +1,10 @@
-import { useState, useEffect, Fragment } from "react"
-import IndexHeader from "../components/index_header"
-import Article from "../components/article"
-import Footer from "../components/footer"
-import axios from "axios"
-import Nav from "../layout/nav"
+import { useState, useEffect, Fragment } from 'react'
+import IndexHeader from '../components/index_header'
+import Article from '../components/article'
+import Footer from '../components/footer'
+import axios from 'axios'
+import Nav from '../layout/nav'
 import { urlPrefix } from '../config'
-
 
 const Articles = () => {
   const [articles, setArticles] = useState([])
@@ -22,12 +21,12 @@ const Articles = () => {
 
   return (
     <Fragment>
-      <IndexHeader title={'Articles'}/>
+      <IndexHeader title={'Articles'} />
       <Nav />
 
       <div
         className="container-fluid mr-auto"
-        style={{ backgroundColor: "black", paddingTop: "15vh" }}
+        style={{ backgroundColor: 'black', paddingTop: '15vh' }}
       >
         <Article articles={articles} />
         <Footer />

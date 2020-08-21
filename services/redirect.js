@@ -1,7 +1,7 @@
-import Router from "next/router"
+import Router from 'next/router'
 
 export const redirectToLogin = (server) => {
-  const login = "/login"
+  const login = '/login'
   if (server) {
     server.writeHead(302, {
       Location: login,
@@ -13,7 +13,7 @@ export const redirectToLogin = (server) => {
 }
 
 export const redirectToIndex = (server) => {
-  const path = "/"
+  const path = '/'
   if (server) {
     server.writeHead(302, {
       Location: path,
