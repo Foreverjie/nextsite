@@ -88,7 +88,7 @@ const TestNav = () => {
               key="mail"
               icon={<MailOutlined />}
               breakpoint="lg"
-              collapsedWidth="30%"
+              collapsedwidth="30%"
             >
               Navigation One
             </Menu.Item>
