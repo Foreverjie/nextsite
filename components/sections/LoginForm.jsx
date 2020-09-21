@@ -24,7 +24,7 @@ const LoginForm = ({
   ...props
 }) => {
   const outerClasses = classNames(
-    'section center-content',
+    'login-form section center-content',
     topOuterDivider && 'has-top-divider',
     bottomOuterDivider && 'has-bottom-divider',
     hasBgColor && 'has-bg-color',
@@ -33,7 +33,7 @@ const LoginForm = ({
   )
 
   const innerClasses = classNames(
-    'section-inner',
+    'login-form-inner section-inner',
     topDivider && 'has-top-divider',
     bottomDivider && 'has-bottom-divider'
   )
@@ -41,27 +41,48 @@ const LoginForm = ({
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const submit = () => {}
+  const submit = () => {
+    console.log(username, password)
+  }
 
   return (
     <section {...props} className={outerClasses}>
       <div className="container-sm">
         <div className={innerClasses}>
-          <div className="hero-content">
+          <div className="login-form-content">
             <h2
               className="mt-0 mb-16 reveal-from-bottom"
               data-reveal-delay="200"
             >
-              Login
+              Welcome
             </h2>
             <div className="container-xs">
-              <div className="reveal-from-bottom">
-                <Input label="Username" name="username" />
-                <Input label="Password" name="password" type="password" />
+              <div className="mb-16 input-content reveal-from-bottom">
+                <Input
+                  label="Username"
+                  name="username"
+                  onChange={(e) => {
+                    setUsername(e.target.value)
+                  }}
+                />
+                <Input
+                  label="Password"
+                  name="password"
+                  type="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                />
               </div>
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
-                  <Button tag="a" color="primary" wideMobile onclick={submit}>
+                  <Button
+                    tag="button"
+                    color="primary"
+                    wideMobile
+                    wide
+                    onClick={submit}
+                  >
                     Login
                   </Button>
                 </ButtonGroup>
