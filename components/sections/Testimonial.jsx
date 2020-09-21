@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import { SectionTilesProps } from '../../utils/SectionProps'
 import SectionHeader from './partials/SectionHeader'
+import axios from 'axios'
+import { urlPrefix } from '../../config'
 
 const propTypes = {
   ...SectionTilesProps.types,
@@ -31,6 +33,21 @@ const Testimonial = ({
     className
   )
 
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+    async function fetchArticles() {
+      // const articles = await axios.get("https://www.jie1203.com/api/articles")
+      try {
+        const articles = await axios.get(`${urlPrefix}/articles`)
+        setArticles(articles.data)
+      } catch (error) {
+        // console.log(error)
+      }
+    }
+    fetchArticles()
+  }, [])
+
   const innerClasses = classNames(
     'testimonial-inner section-inner',
     topDivider && 'has-top-divider',
@@ -40,9 +57,8 @@ const Testimonial = ({
   const tilesClasses = classNames('tiles-wrap', pushLeft && 'push-left')
 
   const sectionHeader = {
-    title: 'Customer testimonials',
-    paragraph:
-      'Vitae aliquet nec ullamcorper sit amet risus nullam eget felis semper quis lectus nulla at volutpat diam ut venenatis tellus—in ornare.',
+    title: 'Article By JIE',
+    paragraph: '随笔',
   }
 
   return (
@@ -51,6 +67,7 @@ const Testimonial = ({
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={tilesClasses}>
+            <Article articles={articles} />
             <div
               className="tiles-item reveal-from-right"
               data-reveal-delay="200"
@@ -97,36 +114,33 @@ const Testimonial = ({
                 </div>
               </div>
             </div>
-
-            <div
-              className="tiles-item reveal-from-left"
-              data-reveal-delay="200"
-            >
-              <div className="tiles-item-inner">
-                <div className="testimonial-item-content">
-                  <p className="text-sm mb-0">
-                    — Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum cillum dolore eu fugiat.
-                  </p>
-                </div>
-                <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-                  <span className="testimonial-item-name text-color-high">
-                    Ben Stafford
-                  </span>
-                  <span className="text-color-low"> / </span>
-                  <span className="testimonial-item-link">
-                    <a href="#0">AppName</a>
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
   )
+}
+
+const Article = (articles) => {
+  console.log(articles)
+  articles.map((article) => {
+    return (
+      <div className="tiles-item reveal-from-right" data-reveal-delay="200">
+        <div className="tiles-item-inner">
+          <div className="testimonial-item-content">
+            <p className="text-sm mb-0">— {article.desc}</p>
+          </div>
+          <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
+            <span className="testimonial-item-name text-color-high">JIE</span>
+            <span className="text-color-low"> / </span>
+            <span className="testimonial-item-link">
+              <a href="#0">{article.title}</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+  })
 }
 
 Testimonial.propTypes = propTypes
