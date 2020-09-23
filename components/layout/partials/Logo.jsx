@@ -9,7 +9,7 @@ const Logo = ({ className, ...props }) => {
   return (
     <div {...props} className={classes}>
       <h1 className="m-0">
-        <Link href="/">
+        <Link href="/test_nav">
           <a>
             <Image
               src={require('./../../../assets/images/logo.svg')}

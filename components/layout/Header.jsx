@@ -113,7 +113,7 @@ const Header = ({
                     )}
                   >
                     <li>
-                      <Link href="/" onClick={closeMenu}>
+                      <Link href="#" onClick={closeMenu}>
                         Documentation
                       </Link>
                     </li>
@@ -121,7 +121,7 @@ const Header = ({
                   {!hideSignin && (
                     <ul className="list-reset header-nav-right">
                       <li>
-                        <Link href="/">
+                        <Link href="/login">
                           <a
                             onClick={closeMenu}
                             className="button button-primary button-wide-mobile button-sm"
