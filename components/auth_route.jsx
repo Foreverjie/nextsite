@@ -1,8 +1,8 @@
-import ServerCookie from "next-cookies"
-import { TOKEN_STORAGE_KEY, AuthToken } from "../services/auth_token"
-import { redirectToLogin } from "../services/redirect"
+import ServerCookie from 'next-cookies'
+import { TOKEN_STORAGE_KEY, AuthToken } from '../services/auth_token'
+import { redirectToLogin } from '../services/redirect'
 
-export default (AuthComponent) => {
+const AuthHOC = (AuthComponent) => {
   const withAuth = (props) => {
     return <AuthComponent {...props} />
   }
@@ -27,3 +27,5 @@ export default (AuthComponent) => {
 
   return withAuth
 }
+
+export default AuthHOC

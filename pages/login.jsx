@@ -4,7 +4,6 @@ import Router from 'next/router'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import LoginForm from '../components/sections/LoginForm'
-import { log } from 'util'
 import IndexHeader from '../components/index_header'
 import axios from 'axios'
 import { AuthToken } from '../services/auth_token'
@@ -22,7 +21,6 @@ const Login = () => {
       password: e.target[1].value,
     }
     const res = await axios.post(`${urlPrefix}/users/login`, data)
-    log(res.data.token)
     await AuthToken.storeToken(res.data.token)
     // Router.push("/")
   }

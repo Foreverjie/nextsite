@@ -1,14 +1,14 @@
-import jwtDecode from "jwt-decode"
-import Cookie from "js-cookie"
-import Router from "next/router"
+import jwtDecode from 'jwt-decode'
+import Cookie from 'js-cookie'
+import Router from 'next/router'
 
-export const TOKEN_STORAGE_KEY = "nextSite.authToken"
+export const TOKEN_STORAGE_KEY = 'nextSite.authToken'
 
 export class AuthToken {
   constructor(token) {
     this.token = token
     this.decodedToken = {
-      name: "",
+      name: '',
       exp: 0,
     }
 
@@ -36,15 +36,16 @@ export class AuthToken {
 
   static async storeToken(token) {
     Cookie.set(TOKEN_STORAGE_KEY, token)
-    await Router.push("/")
+    // await Router.push('/test_nav')
+    await Router.back()
   }
 }
 
 export const tokenConfig = (token) => {
   const config = {
     headers: {
-      'Content-type': 'application/json'
-    }
+      'Content-type': 'application/json',
+    },
   }
 
   // If token, add to headers config

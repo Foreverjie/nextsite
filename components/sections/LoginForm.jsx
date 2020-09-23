@@ -4,6 +4,10 @@ import { SectionProps } from '../../utils/SectionProps'
 import ButtonGroup from '../elements/ButtonGroup'
 import Button from '../elements/Button'
 import Input from '../elements/Input'
+import { AuthToken } from '../../services/auth_token'
+import axios from 'axios'
+import { urlPrefix } from '../../config'
+import { store } from 'react-notifications-component'
 
 const propTypes = {
   ...SectionProps.types,
@@ -41,8 +45,39 @@ const LoginForm = ({
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const submit = () => {
-    console.log(username, password)
+  const error = (message) => {
+    store.addNotification({
+      title: 'Error',
+      message: message,
+      type: 'danger',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 3000,
+        // onScreen: true,
+      },
+    })
+  }
+
+  const login = async () => {
+    const data = {
+      name: username,
+      password: password,
+    }
+    try {
+      const res = await axios.post(`${urlPrefix}/users/login`, data)
+      await AuthToken.storeToken(res.data.token)
+    } catch (e) {
+      console.log(e.response.data)
+      if (e.response.data.message) {
+        error(e.response.data.message)
+      } else if (e.response.data) {
+        error(e.response.data)
+      }
+    }
+    // Router.push("/")
   }
 
   return (
@@ -81,7 +116,7 @@ const LoginForm = ({
                     color="primary"
                     wideMobile
                     wide
-                    onClick={submit}
+                    onClick={login}
                   >
                     Login
                   </Button>
