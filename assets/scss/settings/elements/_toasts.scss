@@ -1,0 +1,72 @@
+// toasts
+$toast--gutter:             20px;
+$toast--gutter-mobile:      0;
+$toast--height: 			48px;		// height of toasts
+$toast-sm--height: 		    36px;		// height of toasts
+$toast--border-width: 	    1px;		// border width (if you wish not to display any border, just set colors to null instead of changing this value)
+$toast--border-style: 	    solid;		// border style
+
+// toasts: text color
+$toast--color: (
+	toast-light: 		get-color(light, 0),
+	toast-dark: 		get-color(light, 1),
+	toast-primary: 	    get-color(light, 1),
+	toast-secondary:	get-color(light, 1),
+	toast-disabled: 	get-color(dark, 3)
+);
+
+// toasts: background color
+$toast--bg: (
+    toast-light: 			get-color(alert, 'success'),
+    toast-light-mobile:     rgba(get-color(dark, 2), .88),
+	toast-light-hover: 	    darken(get-color(light, 1), 5%),
+	toast-dark: 			get-color(dark, 2),
+	toast-dark-hover: 		lighten(get-color(dark, 2), 2%),
+	toast-primary: 		    get-color(primary, 1),
+	toast-primary-hover: 	lighten(get-color(primary, 1), 2%),
+	toast-secondary: 		get-color(secondary, 1),
+	toast-secondary-hover:	lighten(get-color(secondary, 1), 2%),
+    toast-disabled: 		get-color(light, 3),
+);
+
+// toasts: border color
+$toast--border: (
+	toast-light: 			transparent,	// toast-light is default (.toast), so if it's transparent you can set all other values to null
+	toast-light-hover: 	    null,
+	toast-dark: 			null,
+	toast-dark-hover: 		null,
+	toast-primary: 		    null,
+	toast-primary-hover: 	null,
+	toast-secondary: 		null,
+	toast-secondary-hover:  null,
+	toast-disabled: 		null
+);
+
+// toasts: font size
+$toast--size: (
+	toast:	'eta'
+);
+
+// toasts: font weight
+$toast--weight: (
+	toast:	600
+);
+
+// More toasts settings
+$toast--padding-h: 			32px;		// toast, left and right padding
+$toast-sm--padding-h:			24px;		// toast (small), left and right padding
+$toast-w--padding-h:		24px;		// toast, left and right padding in a form group (.form-group) - Overrides toast default padding
+$toast-sm-w--padding-h:	null;		// toast (small), left and right padding in a form group (.form-group) - Overrides toast default padding
+$toast--radius: 				2px;		// toast radius (never use null)
+$toast--transform: 			null;	    // toast text-transform property (null is allowed)
+$toast--max-size-mobile: 		280px;		// toast max width on mobile (.toast-wide-mobile)
+$toast-group-padding: 			16px;		// padding between sibling toasts (nested into .toast-group)
+$toast-loading--thickness:		2px;		// toast loading spinner, stroke width (.toast.is-loading)
+
+// Don't change lines below!
+// Push $toast--* and $form--* values
+$color: 		map-push($color, $toast--color);
+$bg--color: 	map-push($bg--color, $toast--bg);
+$border--color: map-push($border--color, $toast--border);
+$font--size: 	map-push($font--size, $toast--size);
+$font--weight: 	map-push($font--weight, $toast--weight);

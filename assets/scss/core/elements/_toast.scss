@@ -1,0 +1,116 @@
+.top-right {
+    right: $toast--gutter;
+    top: $toast--gutter;
+}
+
+.bottom-right {
+    bottom: $toast--gutter;
+    right: $toast--gutter;
+}
+
+.top-left {
+    top: $toast--gutter;
+    left: $toast--gutter;
+}
+
+.bottom-left {
+    bottom: $toast--gutter;
+    left: $toast--gutter;
+}
+
+.toast-container {
+    position: fixed;
+    max-width: 20%;
+    // width: 10%;
+}
+
+.toast {
+    // position: fixed;
+    display: flex;
+    background-color: color-bg(toast-light);
+	padding: (($toast--height - get-line-height(toast) - ($toast--border-width * 2)) / 2) ($toast--padding-h - $toast--border-width);
+	// height: $toast--height;
+    border-width: $toast--border-width;
+	border-style: $toast--border-style;
+	border-color: color-border(toast-light);
+    border-radius: $toast--radius;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    letter-spacing: inherit;
+    white-space: nowrap;
+    transition: background .15s ease;
+    margin-bottom: 15px;
+    
+}
+
+.toast-icon {
+    content: '';
+    background-image: url(../../../images/success.svg);
+    display: inline-block;
+	width: 20px;
+	max-width: 20px;
+    height: 20px;
+    margin-right: 10px;
+	background-repeat: no-repeat;
+}
+
+.toast-message {
+    display: inline-block;
+    color: color(toast-light);
+    @include font-size(toast);
+    @include font-weight(toast);
+    text-decoration: none !important;
+	text-transform: $toast--transform;
+}
+
+.toast-close {
+    animation: SlideInOut .5s ease-in-out forwards; 
+}
+
+@keyframes SlideInOut {
+    0%{
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-40px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+  }
+
+@include media( '<=medium' ) {
+    .toast-container {
+        width: 100%;
+    }
+
+    .top-right {
+        right: $toast--gutter-mobile;
+        top: $toast--gutter-mobile;
+    }
+    
+    .bottom-right {
+        bottom: $toast--gutter-mobile;
+        right: $toast--gutter-mobile;
+    }
+    
+    .top-left {
+        top: $toast--gutter-mobile;
+        left: $toast--gutter-mobile;
+    }
+    
+    .bottom-left {
+        bottom: $toast--gutter-mobile;
+        left: $toast--gutter-mobile;
+    }
+
+    .toast {
+        // position: fixed;
+        top: 30px;
+        width: 100%;
+    }
+}
