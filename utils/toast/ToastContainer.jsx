@@ -14,7 +14,7 @@ const defaultProps = {
 const ToastContainer = ({ position, ...props }) => {
   const classes = classNames('toast-container', position)
   return (
-    <div className={classes}>
+    <div className={classes} id="toast-container">
       <Toast message="test toast11" />
       <Toast message="test toast11" />
     </div>

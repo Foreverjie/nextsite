@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { render, unmountComponentAtNode, createPortal } from 'react-dom'
 import Toast from '../utils/toast/Toast'
 
 export default function test() {
@@ -10,15 +10,17 @@ export default function test() {
     setTimeout(() => toast.remove(), 500)
   }
 
-  const remove = () => {
-    const toast = document.querySelector('.toast')
-    toast.classList.remove('toast-close')
+  const add = () => {
+    console.log('add')
+    const toastContainer = document.getElementById('toast-container')
+    console.log(toastContainer)
+    return createPortal(<Toast />, toastContainer)
   }
 
   return (
     <>
       <button onClick={close}>click</button>
-      <button onClick={remove}>remove</button>
+      <button onClick={add}>add</button>
     </>
   )
 }
