@@ -11,7 +11,7 @@
     "@webdeb/next-styles": "^1.1.0",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "bootstrap-select": "^1.13.16",
     "dateformat": "^3.0.3",
